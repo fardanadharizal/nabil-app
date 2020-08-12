@@ -1,0 +1,156 @@
+{% extends 'index.html' %}
+{% block title %} My Project - ReLu Project {% endblock %}
+{% block content %}
+
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <p class="h2 text-white d-inline-block mb-0">Yout statistic : </p>
+            </div>
+          </div>
+          <!-- Card stats -->
+          <div class="row">
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total Project</h5>
+                      <span class="h2 font-weight-bold mb-0">{{lenpro}}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                        <i class="fi fi-flipboard"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-nowrap">Unlimited project</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Certificate</h5>
+                      <span class="h2 font-weight-bold mb-0">0</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                        <i class="fi fi-delicious"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-nowrap">Join our workshop to get it</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <!-- Card header -->
+            <div class="card-header border-0">
+              <div class="float-right">
+                <a href="/create" class="btn btn-sm btn-primary">
+                  Create New Project +
+                </a>
+              </div>
+              <h3 class="mb-0">Your Recent Project : </h3>
+            </div>
+            <!-- Light table -->
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col" class="sort" data-sort="name">Project</th>
+                    <th scope="col" class="sort" data-sort="step">Step</th>
+                    <th scope="col" class="sort" data-sort="status">Status</th>
+                    <th scope="col" class="sort" data-sort="completion">Overall Completion</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="list">
+                  {% for row in project %}
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <span class="avatar rounded-circle mr-3">
+                          <img alt="Image placeholder" src="https://neva125671182.files.wordpress.com/2017/12/12.png">
+                        </span>
+                        <div class="media-body">
+                          <span class="name mb-0 text-sm">{{row['title']}}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td class="budget">
+                      {% if row['step'] == 'crawling' : %}
+                        <i class="fi fi-slack text-yellow"></i> Crawling
+                      {% elif row['step'] == 'prepo' : %}
+                        <i class="fi fi-undo text-success"></i> Pre Processing
+                      {% elif row['step'] == 'training' : %}
+                        <i class="fi fi-test-tube text-orange"></i> Training
+                      {% elif row['step'] == 'analize' : %}
+                        <i class="fi fi-share text-info"></i> Analize
+                      {% elif row['step'] == 'complete' : %}
+                        <i class="fi fi-check text-primary"></i> Complete
+                      {% endif %}
+                    </td>
+                    <td>
+                      {% if row['completion'] == 'start' : %}
+                        <span class="badge badge-dot mr-4">
+                          <i class="bg-yellow"></i>
+                          <span class="status">On Progress</span>
+                        </span>
+                      {% else : %}
+                        <span class="badge badge-dot mr-4">
+                          <i class="bg-success"></i>
+                          <span class="status">Finished</span>
+                        </span>
+                      {% endif %}
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="completion mr-2">{{row['persen']}} %</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{row['persen']}}" aria-valuemin="0" aria-valuemax="100" style="width: {{row['persen']}}%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-left">
+                      <a href="/{{row['step']}}?idp={{row['id']}}" class="btn btn-success btn-sm"><i class="fi fi-navigate"></i></a>
+                      <a href="/delete?idp={{row['id']}}" class="btn btn-danger btn-sm"><i class="fi fi-trash"></i></a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <!-- Card footer -->
+            <div class="card-footer py-4">
+              <nav aria-label="...">
+                <h4>You have used {{lenpro}} projects</h4>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

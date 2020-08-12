@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block title %}Training Finish- ReLu Project {% endblock %}
+{% block content %}
+
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center pt-5 pb-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Hello {{session['name']}}</h6>
+              <p class="text-white">
+                Your project title is : <strong>{{ _pname }}</strong>.
+                Happy analizing :)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body py-5">
+              <h3>Yeay, your training is already finished</h3>
+              <p><small>
+                Yeay, your training have been finished and your accuracy is : {{ acc }}<br><br>
+                Click button below to see overall data.
+              </small></p>
+              <div class="pt-3">
+                <a class="btn btn-secondary" href="/training?next=true">Analize The Data</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

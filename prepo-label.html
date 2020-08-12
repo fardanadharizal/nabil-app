@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block title %}Pre Processing - ReLu Project {% endblock %}
+{% block content %}
+
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center pt-5 pb-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Hello {{session['name']}}</h6>
+              <p class="text-white">
+                Your project title is : <strong>{{ _pname }}</strong>.
+                Happy preparation :)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header border-0 text-center">
+              <a class="btn btn-sm btn-default text-white disabled"><i class="fi fi-check"></i> Data Preparation</a>
+              <a class="btn btn-sm btn-secondary disabled">Cleaning & Case Folding</a>
+              <a class="btn btn-sm btn-secondary disabled">Stopword Removal</a>
+              <a class="btn btn-sm btn-secondary disabled">Steaming</a>
+            </div>
+            <div id="forma" class="card-body text-center">
+              <div class="mt-4 mb-4">
+                <h3>Data preparation ready</h3>
+                <p>You have <strong>{{_len}}</strong> label on your data, namely : <strong>{{_uv}}</strong></p>
+              </div>
+              <div class="mt-4 mb-4">
+                <a href="/prepo?next=true" class="btn btn-primary">Next Step :  CCF</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

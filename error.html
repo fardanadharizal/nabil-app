@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block title %} Dashboard - ReLu Project {% endblock %}
+{% block content %}
+
+<div class="container-fluid mt-7">
+  <div class="row">
+    <div class="col-xl-12 text-center">
+      <img src="{{err_ava}}" style="width: 50%; max-width: 230px;">
+      <div class="mt-5">
+        <h2>Please Select a Project First</h2>
+        <div style="width: 90%; max-width: 500px; margin: auto;">
+          <p>
+            Hey {{session['name']}}, first off all you have to select one project instead.
+            You can go to the project page in <a href="/"><strong>here</strong></a>
+            or create new one in <a href="/create"><strong>here</strong></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

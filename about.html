@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block title %} Dashboard - ReLu Project {% endblock %}
+{% block content %}
+
+<div class="container-fluid mt-7">
+  <div class="row">
+    <div class="text-center" style="width: 90%; max-width:600px; margin: auto;">
+      <img src="{{relu_ava}}" style="width: 40%; max-width: 240px;">
+      <div class="mt-5">
+        <h2>Welcome to ReLu Project</h2>
+        <p class="mt-3">
+          <strong>ReLu</strong> is an open source project for twitter sentiment analysis by <strong>Nabila Tenzelyani</strong>
+          and <strong>Fardan Adharizal</strong>. The pilot project of ReLu was made by Nabila Tenzelyani as an academic project
+          literelly final assignment (or 'skripsi' in Indonesian), and was developed further together as an open source project,
+          for helping student to be a Data Scientist.
+        </p>
+        <p>We hope you enjoy the First Gen of ReLu. Warm Hugs :)</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
